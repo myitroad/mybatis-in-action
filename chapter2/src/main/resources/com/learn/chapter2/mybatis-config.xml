@@ -3,10 +3,10 @@
 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<settings>
+	<!--<settings>
 		<setting name="logImpl" value="LOG4J" />
 		<setting name="cacheEnabled" value="true" />
-	</settings>
+	</settings>-->
 	<!-- 定义别名 -->
 	<typeAliases>
 		<typeAlias alias="role" type="com.learn.chapter2.po.Role" />

@@ -65,5 +65,6 @@
 	<modules>
 		<module>chapter2</module>
 		<module>chapter8</module>
-	</modules>
+        <module>corpus-insert-test</module>
+    </modules>
 </project>

@@ -21,6 +21,7 @@ import java.util.concurrent.Executors;
 public class App {
     public static void main(String[] args) throws Exception{
         long start = System.currentTimeMillis();
+        //样例数据见demoData/demo.txt
         String path = "D:\\testData\\nlp\\0-DICT-CORE.TXT";
         List<CorpusBean> corpusBeanList = ReadCorpusUtil.read(path);
         long endRead = System.currentTimeMillis();

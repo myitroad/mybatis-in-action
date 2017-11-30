@@ -30,13 +30,18 @@ public class CorpusInsertTask implements Runnable {
         try {
             sqlSession = SqlSessionFactoryUtil.openSession();
             CorpusMapper corpusMapper = sqlSession.getMapper(CorpusMapper.class);
-            for (CorpusBean corpusBean:corpusBeanList) {
+            try {
+                corpusMapper.insertCorpusList(corpusBeanList);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+           /* for (CorpusBean corpusBean:corpusBeanList) {
                 try {
                     corpusMapper.insertCorpus(corpusBean);
                 } catch (Exception e) {
                     System.out.println("Insert error: "+e);
                 }
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

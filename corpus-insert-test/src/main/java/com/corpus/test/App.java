@@ -3,11 +3,14 @@ package com.corpus.test;
 
 import com.corpus.test.po.CorpusBean;
 import com.corpus.test.task.CorpusInsertTask;
+import com.corpus.test.task.CorpusInsertTastWithJDBC;
+import com.corpus.test.util.ConnectionPool;
 import com.corpus.test.util.JayCommonUtil;
 import com.corpus.test.util.ReadCorpusUtil;
 import com.corpus.test.util.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -37,10 +40,13 @@ public class App {
             executorService.execute(new CorpusInsertTask(corpusBeans, countDownLatch, sqlSession));
         }
 
+       /* for (List<CorpusBean> corpusBeans : listList) {
+            executorService.execute(new CorpusInsertTastWithJDBC(corpusBeans, countDownLatch));
+        }
+*/
         countDownLatch.await();
         long endInsert = System.currentTimeMillis();
         System.out.println("All consume: " + (endInsert - start) + "ms");
-
     }
 
 }

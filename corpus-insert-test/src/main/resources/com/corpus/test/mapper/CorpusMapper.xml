@@ -9,4 +9,12 @@
     <insert id="insertCorpus" parameterType="corpusBean">
         insert into corpus(word,classify,frequncy) values(#{word}, #{classify}, #{frequncy})
     </insert>
+
+    <insert id="insertCorpusList" parameterType="list">
+        insert into corpus(word,classify,frequncy)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.word},#{item.classify},#{item.frequncy})
+        </foreach>
+    </insert>
 </mapper>

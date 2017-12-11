@@ -29,19 +29,19 @@ public class CorpusInsertTask implements Runnable {
         SqlSession sqlSession = null;
         try {
             sqlSession = SqlSessionFactoryUtil.openSession();
-            CorpusMapper corpusMapper = sqlSession.getMapper(CorpusMapper.class);
-            try {
+           CorpusMapper corpusMapper = sqlSession.getMapper(CorpusMapper.class);
+             /*try {
                 corpusMapper.insertCorpusList(corpusBeanList);
             } catch (Exception e) {
                 System.out.println(e);
-            }
-           /* for (CorpusBean corpusBean:corpusBeanList) {
+            }*/
+            for (CorpusBean corpusBean:corpusBeanList) {
                 try {
                     corpusMapper.insertCorpus(corpusBean);
                 } catch (Exception e) {
                     System.out.println("Insert error: "+e);
                 }
-            }*/
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -49,7 +49,7 @@ public class CorpusInsertTask implements Runnable {
             if (sqlSession != null) {
                 sqlSession.close();
             }
+            countDownLatch.countDown();
         }
-        countDownLatch.countDown();
     }
 }
